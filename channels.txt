@@ -1,0 +1,13 @@
+# channels.txt — one channel per line
+# Use the public username (e.g. @channelname) or invite link
+# Lines starting with # are ignored
+#
+# ── EXAMPLES (replace with real channels you've joined) ──
+#
+@cybersecuritynews
+@darkwebinformer
+@vxunderground
+@malwarehunterteam
+@infosecwriteups
+@breachdetector
+@thecyberexpress

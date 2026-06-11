@@ -1,0 +1,7 @@
+config.yaml
+cti_monitor.db
+cti_monitor.log
+cti_monitor.session
+venv/
+__pycache__/
+*.pyc

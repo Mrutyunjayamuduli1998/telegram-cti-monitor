@@ -1,0 +1,119 @@
+# ─────────────────────────────────────────────
+#  Telegram CTI Monitor — Configuration
+# ─────────────────────────────────────────────
+#  Fill in your values before running.
+#  Never commit this file to GitHub.
+# ─────────────────────────────────────────────
+
+telegram:
+  # Get these from https://my.telegram.org → API Development Tools
+  api_id: "19574093"
+  api_hash: "40e6e650139ee77fd087173536541fed"
+  # Session file name (stored locally, keeps you logged in)
+  session_name: "cti_monitor"
+
+misp:
+  # Your MISP instance URL — e.g. http://localhost or https://your-misp-ip
+  url: "http://localhost"
+  # MISP Automation Key: MISP UI → Event Actions → Automation
+  auth_key: "4yrIMTRDR1LLyrOnnIp6OYgtRLJaR1sk4GRYRWEX"
+  # Set to true if using self-signed cert (common in local MISP setups)
+  verify_ssl: false
+  # Default threat level for pushed events: 1=High, 2=Medium, 3=Low, 4=Undefined
+  threat_level: 2
+  # Default distribution: 0=Org only, 1=Community, 2=Connected, 3=All
+  distribution: 0
+
+monitor:
+  # How many seconds to wait between processing messages (rate limit safety)
+  rate_limit_seconds: 1
+  # Max messages to fetch from history when first joining a channel
+  history_fetch_limit: 100
+  # SQLite database file path
+  db_path: "cti_monitor.db"
+  # Log file path
+  log_path: "cti_monitor.log"
+
+alerts:
+  # Send a Telegram message to yourself when a keyword hits
+  notify_self: true
+
+# ─────────────────────────────────────────────
+#  KEYWORD CATEGORIES
+#  Add or remove keywords per category.
+#  Matching is case-insensitive.
+# ─────────────────────────────────────────────
+keywords:
+
+  threat_actors:
+    - "APT28"
+    - "APT29"
+    - "Lazarus"
+    - "Scattered Spider"
+    - "BlackCat"
+    - "LockBit"
+    - "Cl0p"
+    - "REvil"
+    - "Conti"
+    - "Sandworm"
+
+  malware:
+    - "ransomware"
+    - "infostealer"
+    - "RAT"
+    - "rootkit"
+    - "backdoor"
+    - "loader"
+    - "dropper"
+    - "botnet"
+    - "keylogger"
+    - "Cobalt Strike"
+    - "Sliver"
+    - "Brute Ratel"
+    - "RedLine"
+    - "Raccoon"
+
+  vulnerabilities:
+    - "CVE-"
+    - "zero-day"
+    - "0-day"
+    - "RCE"
+    - "remote code execution"
+    - "privilege escalation"
+    - "exploit"
+    - "PoC"
+    - "proof of concept"
+    - "critical vulnerability"
+    - "patch bypass"
+
+  data_leaks:
+    - "database leak"
+    - "data breach"
+    - "credentials dump"
+    - "combolist"
+    - "fullz"
+    - "stealer logs"
+    - "initial access"
+    - "access for sale"
+    - "RDP for sale"
+    - "VPN access"
+
+  ransomware:
+    - "ransom"
+    - "encrypted files"
+    - "decryptor"
+    - "leak site"
+    - "double extortion"
+    - "data published"
+    - "victim"
+
+  ioc_patterns:
+    # These are regex patterns matched against message text
+    # IPv4 addresses
+    - "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b"
+    # Domain-like patterns
+    - "\\b[a-zA-Z0-9\\-]+\\.(?:onion|xyz|top|ru|cn|to)\\b"
+    # MD5 / SHA1 / SHA256 hashes
+    - "\\b[a-fA-F0-9]{32}\\b"
+    - "\\b[a-fA-F0-9]{40}\\b"
+    - "\\b[a-fA-F0-9]{64}\\b"

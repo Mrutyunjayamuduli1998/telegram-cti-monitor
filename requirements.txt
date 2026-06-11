@@ -1,0 +1,5 @@
+telethon==1.36.0
+pymisp==2.4.196
+pyyaml==6.0.2
+aiofiles==23.2.1
+colorlog==6.8.2
