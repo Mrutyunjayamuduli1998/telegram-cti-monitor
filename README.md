@@ -3,6 +3,8 @@
 Real-time Telegram channel monitor for Cyber Threat Intelligence.
 Ingests messages, matches keywords and IOCs, and pushes hits to MISP.
 
+![CTI Monitor Dashboard](telegram-dashboard.png)
+
 ---
 
 ## Architecture
